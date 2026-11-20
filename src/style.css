@@ -132,19 +132,23 @@ h1 {
 }
 .model-copy {
   position: relative; z-index: 1; container-type: inline-size; min-width: 0;
+  display: grid; grid-template-columns: max-content;
 }
 h2, h3 { font-family: var(--font-heading); }
 h2 { font-size: clamp(41px, 5.75vw, 88px); line-height: 1.035; font-weight: 525; letter-spacing: -.045em; }
 .model-copy h2 { font-size: min(15.4cqi, 68px); white-space: nowrap; }
-.model-control { width: min(100%, 270px); margin-top: clamp(14px, 2vw, 28px); }
-.model-control input {
-  appearance: none; width: 100%; margin: 0; height: 32px; cursor: pointer; background: transparent;
-  --track: linear-gradient(to right, #ebe8e0 var(--filled, 0%), #81827a var(--filled, 0%));
+.model-control {
+  margin-top: clamp(14px, 2vw, 28px);
+  background: linear-gradient(to right, #ebe8e0 var(--filled, 0%), #8b8d84 var(--filled, 0%))
+    center / 100% 2px no-repeat;
 }
-.model-control input::-webkit-slider-runnable-track { height: 1px; background: var(--track); }
-.model-control input::-moz-range-track { height: 1px; background: var(--track); }
+.model-control input {
+  appearance: none; display: block; width: 100%; margin: 0; height: 32px; cursor: pointer; background: transparent;
+}
+.model-control input::-webkit-slider-runnable-track { height: 2px; background: transparent; }
+.model-control input::-moz-range-track { height: 2px; background: transparent; }
 .model-control input::-webkit-slider-thumb {
-  appearance: none; width: 12px; height: 12px; margin-top: -5.5px;
+  appearance: none; width: 12px; height: 12px; margin-top: -5px;
   border: 0; border-radius: 50%; background: var(--paper);
 }
 .model-control input::-moz-range-thumb { width: 12px; height: 12px; border: 0; border-radius: 50%; background: var(--paper); }

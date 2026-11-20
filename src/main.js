@@ -27,6 +27,7 @@ const story = document.querySelector('.model-story')
 const sticky = document.querySelector('.model-sticky')
 const stage = document.querySelector('.model-stage')
 const slider = document.querySelector('#explode')
+const modelControl = slider.parentElement
 const header = document.querySelector('.header')
 const scrollMotion = matchMedia('(prefers-reduced-motion: no-preference) and (min-height: 641px)')
 let position = 0
@@ -40,9 +41,10 @@ let lastFrame = 0
 function setPosition(value) {
   position = value
   const percent = Math.round(value * 100)
-  if (Number(slider.value) !== percent || slider.style.getPropertyValue('--filled') !== percent + '%') {
+  const fill = percent + '%'
+  if (Number(slider.value) !== percent || modelControl.style.getPropertyValue('--filled') !== fill) {
     slider.value = percent
-    slider.style.setProperty('--filled', percent + '%')
+    modelControl.style.setProperty('--filled', fill)
     slider.setAttribute('aria-valuetext', percent === 0 ? 'В сборе' : percent === 100 ? 'В разборе' : percent + '% разбора')
   }
   stage.style.setProperty('--progress', value)
