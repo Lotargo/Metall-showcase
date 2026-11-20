@@ -1,8 +1,5 @@
-import '@fontsource-variable/golos-text'
-import '@fontsource/ibm-plex-mono/cyrillic-400.css'
-import '@fontsource/ibm-plex-mono/latin-400.css'
+import '@fontsource-variable/manrope'
 import './style.css'
-import { startField } from './field.js'
 
 const story = document.querySelector('.model-story')
 const sticky = document.querySelector('.model-sticky')
@@ -11,42 +8,68 @@ const slider = document.querySelector('#explode')
 const header = document.querySelector('.header')
 const scrollMotion = matchMedia('(prefers-reduced-motion: no-preference) and (min-height: 641px)')
 let position = 0
+let target = 0
 let manualAt = null
 let drawModel
-let pending = false
+let scrollFrame = 0
+let driftFrame = 0
+let lastFrame = 0
 
 function setPosition(value) {
   position = value
   const percent = Math.round(value * 100)
-  slider.value = percent
-  slider.style.setProperty('--filled', percent + '%')
-  slider.setAttribute('aria-valuetext', percent === 0 ? 'В сборе' : percent === 100 ? 'В разборе' : percent + '% разбора')
+  if (Number(slider.value) !== percent || slider.style.getPropertyValue('--filled') !== percent + '%') {
+    slider.value = percent
+    slider.style.setProperty('--filled', percent + '%')
+    slider.setAttribute('aria-valuetext', percent === 0 ? 'В сборе' : percent === 100 ? 'В разборе' : percent + '% разбора')
+  }
   stage.style.setProperty('--progress', value)
   drawModel?.(value)
 }
 
 function setManual(percent) {
   manualAt = window.scrollY
-  setPosition(percent / 100)
+  cancelAnimationFrame(driftFrame)
+  driftFrame = 0
+  target = percent / 100
+  setPosition(target)
+}
+
+function glide(now) {
+  const difference = target - position
+  if (Math.abs(difference) <= .002) {
+    driftFrame = 0
+    setPosition(target)
+    return
+  }
+  const dt = Math.min(32, now - lastFrame)
+  lastFrame = now
+  setPosition(position + difference * (1 - Math.exp(-dt / 66)))
+  driftFrame = requestAnimationFrame(glide)
 }
 
 function syncScroll() {
-  pending = false
-  header.classList.toggle('is-scrolled', window.scrollY > 20)
-  if (!scrollMotion.matches) return
+  scrollFrame = 0
+  header.classList.toggle('is-scrolled', window.scrollY > 26)
+  if (!scrollMotion.matches) {
+    cancelAnimationFrame(driftFrame)
+    driftFrame = 0
+    return
+  }
   if (manualAt !== null && Math.abs(manualAt - window.scrollY) < 12) return
   manualAt = null
   const travel = story.offsetHeight - sticky.offsetHeight
   if (travel <= 0) return
   const elapsed = -story.getBoundingClientRect().top
-  const progress = Math.min(1, Math.max(0, elapsed / travel))
-  if (progress !== position) setPosition(progress)
+  target = Math.min(1, Math.max(0, elapsed / travel))
+  if (target !== position && !driftFrame) {
+    lastFrame = performance.now()
+    driftFrame = requestAnimationFrame(glide)
+  }
 }
 
 function requestSync() {
-  if (pending) return
-  pending = true
-  requestAnimationFrame(syncScroll)
+  if (!scrollFrame) scrollFrame = requestAnimationFrame(syncScroll)
 }
 
 slider.addEventListener('input', () => setManual(Number(slider.value)))
@@ -65,9 +88,7 @@ const loader = new IntersectionObserver(([entry]) => {
     .then(({ mountModel }) => mountModel(document.querySelector('#model-canvas'), stage, () => position))
     .then(render => { drawModel = render })
     .catch(() => {
-      // The two Blender renders stay available as a fallback.
+      // Keep the assembled and exploded Blender renders as a fallback.
     })
-}, { rootMargin: '200px' })
+}, { rootMargin: '170px' })
 loader.observe(stage)
-
-startField(document.querySelector('#field'))

@@ -10,7 +10,7 @@ export async function mountModel(host, stage, getPosition) {
   const renderer = new THREE.WebGLRenderer({ canvas, context, alpha: true, antialias: true })
   renderer.setPixelRatio(Math.min(devicePixelRatio, 1.7))
   renderer.toneMapping = THREE.ACESFilmicToneMapping
-  renderer.toneMappingExposure = 1.04
+  renderer.toneMappingExposure = .94
   const scene = new THREE.Scene()
   const camera = new THREE.OrthographicCamera(-4, 4, 3, -3, .1, 100)
 
@@ -20,9 +20,9 @@ export async function mountModel(host, stage, getPosition) {
   room.dispose()
   pmrem.dispose()
   scene.environment = environment.texture
-  scene.environmentIntensity = 1.12
+  scene.environmentIntensity = .94
 
-  for (const [position, intensity] of [[[3, 5, 3], 2.15], [[-3, -2, -2], 1.5]]) {
+  for (const [position, intensity] of [[[3, 5, 3], 1.65], [[-3, -2, -2], 1.12]]) {
     const light = new THREE.DirectionalLight(0xffffff, intensity)
     light.position.set(...position)
     scene.add(light)
@@ -37,23 +37,9 @@ export async function mountModel(host, stage, getPosition) {
     throw error
   }
 
-  const strip = document.createElement('canvas')
-  strip.width = 4
-  strip.height = 512
-  const brush = strip.getContext('2d')
-  for (let y = 0; y < strip.height; y++) {
-    const tone = Math.round(135 + 70 * Math.sin(y * 23.2) + 40 * Math.sin(y * 6.3))
-    brush.fillStyle = 'rgb(' + tone + ' ' + tone + ' ' + tone + ')'
-    brush.fillRect(0, y, 4, 1)
-  }
-  const grain = new THREE.CanvasTexture(strip)
   const moving = []
   assembly.traverse(node => {
     if (typeof node.userData.travel === 'number') moving.push(node)
-    if (node.isMesh && node.material.name === 'Turned steel') {
-      node.material.bumpMap = grain
-      node.material.bumpScale = .015
-    }
   })
   scene.add(assembly)
 
@@ -64,11 +50,11 @@ export async function mountModel(host, stage, getPosition) {
     const easing = progress * progress * (3 - 2 * progress)
     for (const part of moving) part.position.y = part.userData.travel * easing
     const rotation = reduced.matches ? 0 : easing
-    camera.position.set(8 - 2.6 * rotation, -7 + 1.7 * rotation, 11)
-    camera.lookAt(0, -.21 * easing, 0)
-    camera.rotateZ(-1.065 + .085 * rotation)
+    camera.position.set(8 - rotation, -7 + 1.5 * rotation, 11 + 3 * rotation)
+    camera.lookAt(0, -.02 + .45 * easing, 0)
+    camera.rotateZ(THREE.MathUtils.degToRad(-61 - 4 * rotation))
     const aspect = host.clientWidth / host.clientHeight
-    const height = Math.max(4.15 + 1.35 * easing, (7.25 + 4.80 * easing) / aspect)
+    const height = Math.max(4.8 + 2.4 * easing, (7.65 + 6.55 * easing) / aspect)
     camera.left = -height * aspect / 2
     camera.right = height * aspect / 2
     camera.top = height / 2
