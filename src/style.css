@@ -189,7 +189,7 @@ h2 { font-size: clamp(41px, 5.75vw, 88px); line-height: 1.035; font-weight: 525;
 .section-heading { margin-bottom: clamp(32px, 4vw, 58px); }
 .feature-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 2.1vw, 32px); }
 .feature { min-width: 0; border-bottom: 1px solid var(--line); }
-.feature img { width: 100%; height: auto; background: #e7e1d5; filter: saturate(.53); }
+.feature img, .benefit-illustration img { width: 100%; height: auto; background: #e7e1d5; filter: saturate(.53); }
 .feature-copy { padding: 19px 0 22px; }
 .feature h3 { font-size: clamp(18px, 2vw, 27px); line-height: 1.2; font-weight: 620; letter-spacing: -.031em; }
 .feature-copy p { margin-top: 12px; }
@@ -231,14 +231,8 @@ h2 { font-size: clamp(41px, 5.75vw, 88px); line-height: 1.035; font-weight: 525;
 .workflow-section {
   --workflow-gap: clamp(22px, 4svh, 56px);
   --workflow-title-size: clamp(39px, min(5.75vw, 9svh), 88px);
-  position: relative; isolation: isolate;
   color: var(--paper); background: var(--night);
   padding-block: var(--workflow-gap);
-}
-.workflow-section::before {
-  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
-  background: url('/media/metall-workflow-backdrop.webp') center / cover no-repeat;
-  opacity: .52;
 }
 .workflow-section .section-heading { margin-bottom: var(--workflow-gap); }
 .workflow-section h2 { font-size: var(--workflow-title-size); }
@@ -252,6 +246,7 @@ h2 { font-size: clamp(41px, 5.75vw, 88px); line-height: 1.035; font-weight: 525;
 .workflow-details > div { border-top: 1px solid #7c7e72; padding-top: 13px; }
 .workflow-details dt { font-family: var(--font-heading); font-size: clamp(17px, 1.5vw, 22px); font-weight: 640; line-height: 1.25; }
 .workflow-details dd { margin: 9px 0 0; color: #d3d0c7; font-size: 15px; line-height: 1.55; text-wrap: pretty; }
+.benefits-section { padding-block-end: clamp(22px, 3.1svh, 38px); }
 .benefits-drawing {
   block-size: clamp(60px, min(13vw, 18svh), 180px);
   margin-top: clamp(16px, 2.6svh, 30px);
@@ -259,12 +254,16 @@ h2 { font-size: clamp(41px, 5.75vw, 88px); line-height: 1.035; font-weight: 525;
   background: url('/media/engineering-benefits.svg') right 82% / auto 235% no-repeat;
   opacity: .48;
 }
-.benefit-list > div { border-top: 1px solid var(--line); padding-top: 18px; }
+.benefit-list > div { display: flex; flex-direction: column; min-width: 0; border-top: 1px solid var(--line); padding-top: 18px; }
 .benefit-list dt {
   font-family: var(--font-heading); font-size: clamp(19px, 2vw, 27px); font-weight: 620;
   line-height: 1.2; letter-spacing: -.031em;
 }
 .benefit-list dd { margin: 11px 0 0; }
+.benefit-list .benefit-illustration {
+  margin-top: auto; padding-block: clamp(18px, 2vw, 28px) 16px; border-bottom: 1px solid var(--line);
+}
+.benefit-illustration img { aspect-ratio: 21 / 13; object-fit: cover; }
 .tender-panel {
   display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); align-items: center;
   gap: clamp(22px, 4vw, 58px); margin-top: clamp(32px, 7svh, 76px); padding: clamp(22px, 4vw, 56px);
@@ -291,12 +290,23 @@ h2 { font-size: clamp(41px, 5.75vw, 88px); line-height: 1.035; font-weight: 525;
   .workflow-diagram { width: min(100%, 460px); margin-inline: auto; }
 }
 @media (min-width: 1024px) {
-  .workflow-diagram {
-    /* The wide diagram is 1200 by 512. Keep room for the heading and the supporting copy. */
-    width: clamp(780px, calc((var(--section-height) - 4 * var(--workflow-gap) - 1.035 * var(--workflow-title-size) - 120px) * 1200 / 512), 100%);
+  .workflow-layout {
+    --workflow-columns-gap: clamp(24px, 3vw, 50px);
+    /* Fit the 3:2 image under the heading and keep a readable column for the notes. */
+    --workflow-art-width: clamp(620px, calc((var(--section-height) - 3 * var(--workflow-gap) - 1.035 * var(--workflow-title-size)) * 1.5), 1080px);
+    display: grid;
+    grid-template-columns: minmax(0, min(var(--workflow-art-width), calc(100% - 230px - var(--workflow-columns-gap)))) minmax(0, 1fr);
+    gap: var(--workflow-columns-gap); align-items: start;
+  }
+  .workflow-details {
+    grid-template-columns: 1fr; gap: clamp(18px, 2.3svh, 32px); margin-top: 0; align-self: center;
   }
 }
 
+.demo-section {
+  min-block-size: 0;
+  padding-block: clamp(24px, 3.4svh, 44px) clamp(30px, 4.9svh, 62px);
+}
 .demo-panel {
   --panel-edge: clamp(22px, 5vw, 78px);
   position: relative; isolation: isolate; overflow: clip;

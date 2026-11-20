@@ -130,25 +130,27 @@
           <div class="section-heading" data-reveal>
             <h2 id="workflow-title">Как устроен Metall</h2>
           </div>
-          <picture class="workflow-diagram" data-reveal>
-            <source media="(max-width: 1023px)" srcset="./media/metall-workflow-dark-mobile.svg" width="320" height="858">
-            <img src="./media/metall-workflow-dark.svg" width="1200" height="512" alt="Схема работы Metall" aria-describedby="workflow-description" loading="lazy" decoding="async">
-          </picture>
-          <p class="visually-hidden" id="workflow-description">Metall строит 3D-модель по чертежу или импортирует приложенный STEP. САПР измеряет модель, а Metall сверяет её с требованиями чертежа и формирует паспорт и замечания. После принятия модели Metall определяет заготовку, маршрут и объём съёма, рассчитывает машинное время и готовит предварительную смету работ.</p>
-          <dl class="workflow-details" data-reveal>
-            <div>
-              <dt>Откуда берутся требования</dt>
-              <dd>STEP даёт готовую геометрию. Из чертежа Metall берёт размеры для сверки, допуски и шероховатость. Паспорт связывает требования с измерениями модели.</dd>
-            </div>
-            <div>
-              <dt>Что происходит перед расчётом</dt>
-              <dd>При ручной проверке технолог подтверждает модель. Если построена черновая геометрия, измерения САПР позволяют разделить съём на черновой и чистовой.</dd>
-            </div>
-            <div>
-              <dt>На чём основана смета</dt>
-              <dd>Математическое ядро считает машинное время по формулам. В основаниях расчёта видны исходные величины, допущения и причины диапазона оценки.</dd>
-            </div>
-          </dl>
+          <div class="workflow-layout">
+            <picture class="workflow-diagram" data-reveal>
+              <source media="(max-width: 1023px)" srcset="./media/metall-workflow-illustrated-mobile.webp" width="1024" height="1536">
+              <img src="./media/metall-workflow-illustrated.webp" width="1536" height="1024" alt="Иллюстрированная схема работы Metall" aria-describedby="workflow-description" loading="lazy" decoding="async">
+            </picture>
+            <p class="visually-hidden" id="workflow-description">Metall строит 3D-модель по чертежу или импортирует приложенный STEP. САПР измеряет модель, а Metall сверяет её с требованиями чертежа и формирует паспорт и замечания. После принятия модели Metall определяет заготовку, маршрут и объём съёма, рассчитывает машинное время и готовит предварительную смету работ.</p>
+            <dl class="workflow-details" data-reveal>
+              <div>
+                <dt>Откуда берутся требования</dt>
+                <dd>STEP даёт готовую геометрию. Из чертежа Metall берёт размеры для сверки, допуски и шероховатость. Паспорт связывает требования с измерениями модели.</dd>
+              </div>
+              <div>
+                <dt>Что происходит перед расчётом</dt>
+                <dd>При ручной проверке технолог подтверждает модель. Если построена черновая геометрия, измерения САПР позволяют разделить съём на черновой и чистовой.</dd>
+              </div>
+              <div>
+                <dt>На чём основана смета</dt>
+                <dd>Математическое ядро считает машинное время по формулам. В основаниях расчёта видны исходные величины, допущения и причины диапазона оценки.</dd>
+              </div>
+            </dl>
+          </div>
         </div>
       </section>
 
@@ -160,14 +162,23 @@
           <div>
             <dt>Конструктору</dt>
             <dd>Сопоставить, например, диаметр ступени на чертеже с измерением модели. По фрагменту чертежа и замечанию Metall проще согласовать уточнение до передачи в цех.</dd>
+            <dd class="benefit-illustration">
+              <img src="./media/benefit-design.webp" width="1259" height="780" alt="Кронциркуль у буртика стальной детали рядом с её чертежом" loading="lazy" decoding="async">
+            </dd>
           </div>
           <div>
             <dt>Технологу</dt>
             <dd>Открыть паспорт и предварительный маршрут, чтобы проверить, какая заготовка принята, какие операции предусмотрены и какое время оценено на деталь.</dd>
+            <dd class="benefit-illustration">
+              <img src="./media/benefit-technology.webp" width="1260" height="780" alt="Круглая заготовка и установка детали под сверление" loading="lazy" decoding="async">
+            </dd>
           </div>
           <div>
             <dt>Руководителю производства</dt>
             <dd>Оценить, займёт ли партия свободное время станков. В расчёте отдельно видны наладка и время обработки, которое зависит от количества деталей.</dd>
+            <dd class="benefit-illustration">
+              <img src="./media/benefit-production.webp" width="1260" height="780" alt="Партия одинаковых деталей у двух рабочих мест" loading="lazy" decoding="async">
+            </dd>
           </div>
         </dl>
         <div class="tender-panel" data-reveal>
