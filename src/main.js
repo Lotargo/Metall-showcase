@@ -1,4 +1,6 @@
 import '@fontsource-variable/manrope'
+import '@fontsource-variable/commissioner/flar.css'
+import '@fontsource-variable/onest'
 import './style.css'
 
 const story = document.querySelector('.model-story')
