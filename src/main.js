@@ -1,7 +1,27 @@
 import '@fontsource-variable/manrope'
 import '@fontsource-variable/commissioner/flar.css'
 import '@fontsource-variable/onest'
+import { mountMachiningField } from './machining-field.js'
 import './style.css'
+
+document.querySelectorAll('[data-machining-field]').forEach(mountMachiningField)
+
+const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)')
+if (!reducedMotion.matches && 'IntersectionObserver' in window) {
+  const belowFold = [...document.querySelectorAll('[data-reveal]')]
+    .filter(block => block.getBoundingClientRect().top >= window.innerHeight)
+  const reveals = new IntersectionObserver(entries => {
+    for (const { target, isIntersecting } of entries) {
+      if (!isIntersecting) continue
+      target.classList.remove('reveal-pending')
+      reveals.unobserve(target)
+    }
+  }, { rootMargin: '0px 0px -48px 0px' })
+  for (const block of belowFold) {
+    block.classList.add('reveal-pending')
+    reveals.observe(block)
+  }
+}
 
 const story = document.querySelector('.model-story')
 const sticky = document.querySelector('.model-sticky')

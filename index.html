@@ -29,6 +29,7 @@
           </div>
           <figure class="hero-figure">
             <div class="hero-graphic">
+              <canvas class="machining-field" data-machining-field aria-hidden="true"></canvas>
               <img class="hero-metal" src="./media/shaft-assembled.webp" width="1440" height="960"
                 alt="Ступенчатый вал с подшипниками" fetchpriority="high">
             </div>
@@ -39,7 +40,7 @@
       <section class="model-story" id="model" aria-labelledby="model-title">
         <div class="model-sticky">
           <div class="model-inner wrap">
-            <div class="model-copy">
+            <div class="model-copy" data-reveal>
               <h2 id="model-title">Вал<br>в&nbsp;разборе</h2>
               <div class="model-control">
                 <label class="visually-hidden" for="explode">Степень разбора модели</label>
@@ -51,7 +52,7 @@
               </div>
             </div>
 
-            <div class="model-figure">
+            <div class="model-figure" data-reveal>
               <div class="model-stage" id="model-stage" role="img" aria-label="Сборка ступенчатого вала с подшипниками и крепежом">
                 <img class="model-poster" src="./media/shaft-assembled.webp" width="1440" height="960" alt="">
                 <img class="model-poster poster-exploded" src="./media/shaft-exploded.webp" width="1440" height="960" alt="" loading="lazy">
@@ -63,23 +64,23 @@
       </section>
 
       <section class="capabilities wrap" id="capabilities" aria-labelledby="capabilities-title">
-        <div class="section-heading">
+        <div class="section-heading" data-reveal>
           <h2 id="capabilities-title">Возможности<br>Metall</h2>
         </div>
         <div class="feature-grid">
-          <article class="feature">
+          <article class="feature" data-reveal>
             <img src="./media/sketch-drawing.webp" width="1260" height="780" alt="" loading="lazy">
             <div class="feature-copy">
               <h3>Разбор чертежа</h3>
             </div>
           </article>
-          <article class="feature">
+          <article class="feature" data-reveal>
             <img src="./media/sketch-geometry.webp" width="1260" height="780" alt="" loading="lazy">
             <div class="feature-copy">
               <h3>Модель и заготовка</h3>
             </div>
           </article>
-          <article class="feature">
+          <article class="feature" data-reveal>
             <img src="./media/sketch-route.webp" width="1260" height="780" alt="" loading="lazy">
             <div class="feature-copy">
               <h3>Маршрут обработки</h3>
@@ -87,21 +88,47 @@
           </article>
         </div>
       </section>
+
+      <section class="demo-section wrap" aria-labelledby="demo-title">
+        <div class="demo-panel" data-reveal>
+          <div class="demo-copy">
+            <h2 id="demo-title">Metall в работе</h2>
+            <a class="button button-dark" href="https://lotargo.github.io/Metall-DEMO/">Открыть демо <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="demo-graphic">
+            <canvas class="machining-field" data-machining-field data-variant="footer" aria-hidden="true"></canvas>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="footer">
       <div class="wrap">
-        <div class="footer-main">
-          <div>
-            <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"></span>Metall</a>
-          </div>
-          <nav aria-label="Навигация в подвале">
-            <a href="#model">3D-модель</a>
-            <a href="#capabilities">Возможности</a>
+        <div class="footer-main" data-reveal>
+          <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"></span>Metall</a>
+          <nav class="footer-links" aria-label="Навигация в подвале">
+            <div class="footer-group">
+              <p id="footer-product">Продукт</p>
+              <ul aria-labelledby="footer-product">
+                <li><a href="#model">3D-модель</a></li>
+                <li><a href="#capabilities">Возможности</a></li>
+              </ul>
+            </div>
+            <div class="footer-group">
+              <p id="footer-demo">Демонстрация</p>
+              <ul aria-labelledby="footer-demo">
+                <li><a href="https://lotargo.github.io/Metall-DEMO/">Открыть демо <span aria-hidden="true">↗</span></a></li>
+              </ul>
+            </div>
+            <div class="footer-group">
+              <p id="footer-resources">Материалы</p>
+              <ul aria-labelledby="footer-resources">
+                <li><a href="https://github.com/Lotargo/Metall-DEMO">Репозиторий демо <span aria-hidden="true">↗</span></a></li>
+              </ul>
+            </div>
           </nav>
-          <a class="button button-dark" href="https://lotargo.github.io/Metall-DEMO/">Открыть демо <span aria-hidden="true">↗</span></a>
         </div>
-        <div class="footer-bottom"><a href="#top">Наверх <span aria-hidden="true">↑</span></a></div>
+        <div class="footer-bottom"><small>© Metall</small></div>
       </div>
     </footer>
     <script type="module" src="/src/main.js"></script>
