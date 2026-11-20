@@ -8,6 +8,15 @@ import './style.css'
 
 document.querySelectorAll('[data-machining-field]').forEach(mountMachiningField)
 
+const header = document.querySelector('.header')
+const rootStyle = document.documentElement.style
+function syncHeaderHeight() {
+  const height = `${header.offsetHeight}px`
+  if (rootStyle.getPropertyValue('--header-height') !== height) rootStyle.setProperty('--header-height', height)
+}
+syncHeaderHeight()
+new ResizeObserver(syncHeaderHeight).observe(header)
+
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)')
 enableSmoothScroll(reducedMotion)
 if (!reducedMotion.matches && 'IntersectionObserver' in window) {
@@ -31,7 +40,6 @@ const sticky = document.querySelector('.model-sticky')
 const stage = document.querySelector('.model-stage')
 const slider = document.querySelector('#explode')
 const modelControl = slider.parentElement
-const header = document.querySelector('.header')
 const scrollMotion = matchMedia('(prefers-reduced-motion: no-preference) and (min-height: 641px)')
 const isModelFrameDue = createFrameClock()
 let position = 0
