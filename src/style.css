@@ -197,7 +197,7 @@ h2 { font-size: clamp(41px, 5.75vw, 88px); line-height: 1.035; font-weight: 525;
 .section-heading { margin-bottom: clamp(32px, 4vw, 58px); }
 .feature-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 2.1vw, 32px); }
 .feature { min-width: 0; border-bottom: 1px solid var(--line); }
-.feature img, .benefit-illustration img { width: 100%; height: auto; background: #e7e1d5; filter: saturate(.53); }
+.feature img, .benefit-illustration img, .workflow-diagram img { width: 100%; height: auto; background: #e7e1d5; filter: saturate(.53); }
 .feature-copy { padding: 19px 0 22px; }
 .feature h3 { font-size: clamp(18px, 2vw, 27px); line-height: 1.2; font-weight: 620; letter-spacing: -.031em; }
 .feature-copy p { margin-top: 12px; }
@@ -257,21 +257,20 @@ h2 { font-size: clamp(41px, 5.75vw, 88px); line-height: 1.035; font-weight: 525;
 .workflow-section {
   --workflow-gap: clamp(22px, 4svh, 56px);
   --workflow-title-size: clamp(39px, min(5.75vw, 9svh), 88px);
-  color: var(--paper); background: var(--night);
+  background: #eeebe3; border-block: 1px solid var(--line);
   padding-block: var(--workflow-gap);
 }
 .workflow-section .section-heading { margin-bottom: var(--workflow-gap); }
 .workflow-section h2 { font-size: var(--workflow-title-size); }
 .workflow-diagram { display: block; }
-.workflow-diagram img { width: 100%; height: auto; }
 .workflow-details, .benefit-list {
   display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 2.1vw, 32px);
   margin: 0;
 }
 .workflow-details { margin-top: var(--workflow-gap); }
-.workflow-details > div { border-top: 1px solid #7c7e72; padding-top: 13px; }
+.workflow-details > div { border-top: 1px solid var(--line); padding-top: 13px; }
 .workflow-details dt { font-family: var(--font-heading); font-size: clamp(17px, 1.5vw, 22px); font-weight: 640; line-height: 1.25; }
-.workflow-details dd { margin: 9px 0 0; color: #d3d0c7; font-size: 15px; line-height: 1.55; text-wrap: pretty; }
+.workflow-details dd { margin: 9px 0 0; color: var(--muted); font-size: 15px; line-height: 1.55; text-wrap: pretty; }
 .benefits-section { padding-block-end: clamp(22px, 3.1svh, 38px); }
 .benefits-drawing {
   block-size: clamp(60px, min(13vw, 18svh), 180px);
