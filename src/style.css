@@ -94,8 +94,8 @@ h1 {
   pointer-events: none;
 }
 .hero-graphic .machining-field {
-  width: 125%; height: 124%; inset: -11% auto auto -11%;
-  mask-image: radial-gradient(ellipse 65% 61% at 55% 48%, #000 48%, transparent 86%);
+  width: 152%; height: 149%; inset: -24% auto auto -23%;
+  mask-image: radial-gradient(ellipse 67% 60% at 52% 50%, #000 53%, transparent 92%);
 }
 .hero-graphic::before {
   content: ""; position: absolute; inset: 4% -15% 4% -9%; z-index: -1; pointer-events: none;
@@ -200,7 +200,8 @@ h2 { font-size: clamp(41px, 5.75vw, 88px); line-height: 1.035; font-weight: 525;
 .demo-copy .button { margin-top: clamp(24px, 3.2vw, 48px); }
 .demo-graphic { position: relative; min-width: 0; align-self: stretch; }
 .demo-graphic .machining-field {
-  mask-image: radial-gradient(ellipse 80% 63% at 62% 53%, #000 50%, transparent 89%);
+  width: 122%; inset-inline-start: -14%;
+  mask-image: radial-gradient(ellipse 73% 61% at 54% 51%, #000 51%, transparent 93%);
 }
 
 .footer {
