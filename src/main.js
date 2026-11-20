@@ -1,12 +1,15 @@
 import '@fontsource-variable/manrope'
 import '@fontsource-variable/commissioner/flar.css'
 import '@fontsource-variable/onest'
+import { createFrameClock } from './frame-clock.js'
 import { mountMachiningField } from './machining-field.js'
+import { enableSmoothScroll } from './smooth-scroll.js'
 import './style.css'
 
 document.querySelectorAll('[data-machining-field]').forEach(mountMachiningField)
 
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)')
+enableSmoothScroll(reducedMotion)
 if (!reducedMotion.matches && 'IntersectionObserver' in window) {
   const belowFold = [...document.querySelectorAll('[data-reveal]')]
     .filter(block => block.getBoundingClientRect().top >= window.innerHeight)
@@ -30,6 +33,7 @@ const slider = document.querySelector('#explode')
 const modelControl = slider.parentElement
 const header = document.querySelector('.header')
 const scrollMotion = matchMedia('(prefers-reduced-motion: no-preference) and (min-height: 641px)')
+const isModelFrameDue = createFrameClock()
 let position = 0
 let target = 0
 let manualAt = null
@@ -60,6 +64,10 @@ function setManual(percent) {
 }
 
 function glide(now) {
+  if (!isModelFrameDue(now)) {
+    driftFrame = requestAnimationFrame(glide)
+    return
+  }
   const difference = target - position
   if (Math.abs(difference) <= .002) {
     driftFrame = 0

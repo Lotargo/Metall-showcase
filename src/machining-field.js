@@ -1,3 +1,5 @@
+import { createFrameClock } from './frame-clock.js'
+
 const TURN = Math.PI * 2
 
 export function mountMachiningField(canvas) {
@@ -5,6 +7,7 @@ export function mountMachiningField(canvas) {
   if (!ctx) return () => {}
   const footer = canvas.dataset.variant === 'footer'
   const motion = matchMedia('(prefers-reduced-motion: reduce)')
+  const isFrameDue = createFrameClock()
   let width = 0, height = 0, frame = 0, previous = 0, elapsed = 0
   let visible = false
   let disposed = false
@@ -80,9 +83,11 @@ export function mountMachiningField(canvas) {
     ctx.globalAlpha = 1
   }
   function tick(now) {
-    if (previous) elapsed += Math.min(now - previous, 100) / 1000
-    previous = now
-    paint()
+    if (isFrameDue(now)) {
+      if (previous) elapsed += Math.min(now - previous, 100) / 1000
+      previous = now
+      paint()
+    }
     frame = requestAnimationFrame(tick)
   }
 

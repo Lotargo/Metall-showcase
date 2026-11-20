@@ -32,7 +32,7 @@ section[id] { scroll-margin-top: 86px; }
   width: min(100%, 1472px); margin-inline: auto; display: grid; grid-template-columns: 1fr auto 1fr;
   align-items: center; min-height: 64px; padding: 0 17px; gap: 22px; pointer-events: auto;
   border: 1px solid transparent; border-bottom-color: var(--line); background: var(--paper);
-  transition: width .32s cubic-bezier(.22, 1, .36, 1), border-color .24s, border-radius .24s, background-color .24s;
+  transition: border-color .24s, border-radius .24s, background-color .24s;
 }
 .header.is-scrolled .nav-shell {
   width: min(100%, 1240px); border-color: #c9c7bf; border-radius: 12px; background: #f2f0ebee;
@@ -64,6 +64,11 @@ section[id] { scroll-margin-top: 86px; }
   content: ""; position: absolute; inset: 0; pointer-events: none; z-index: -1;
   background: linear-gradient(118deg, transparent 44%, #d7d5ce72 67%, #fcfbf878 79%, transparent 94%);
   mask-image: linear-gradient(to bottom, transparent, #000 20%, #000 78%, transparent);
+}
+.hero-drawing {
+  position: absolute; inset: 0; z-index: -1;
+  width: 100%; height: 100%; object-fit: cover;
+  opacity: .13; pointer-events: none;
 }
 .hero-inner {
   display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1fr);
@@ -226,6 +231,10 @@ h2 { font-size: clamp(41px, 5.75vw, 88px); line-height: 1.035; font-weight: 525;
 .footer-bottom small { font-size: 14px; }
 
 @media (max-width: 800px) {
+  .hero-drawing {
+    opacity: .12; object-position: 58% center;
+    mask-image: linear-gradient(to bottom, #0005 32%, #000 52%);
+  }
   .hero-inner {
     grid-template-columns: 1fr; min-height: 0; row-gap: clamp(28px, 5vw, 44px);
     padding: 50px var(--pad) 42px;

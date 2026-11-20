@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 760" fill="none" stroke="#454640" stroke-linejoin="round">
+  <defs>
+    <pattern id="section" width="11" height="11" patternUnits="userSpaceOnUse">
+      <path d="M-1 1l3-3M0 11L11 0m-1 12 3-3" stroke-width=".9" opacity=".56"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 12 5" markerWidth="10" markerHeight="4" refX="11" refY="2.5" orient="auto-start-reverse">
+      <path d="M0 0l12 2.5L0 5l2-2.5z" fill="#454640" stroke="none"/>
+    </marker>
+    <path id="profile" d="M0 0v-41l5-5h43q4 0 4-5v-17l4-4h42l4 4v12q0 3 4 3h18v-8h16l4 4h219l4 4v4q0 4 4 4h135l4 4v4q0 4 4 4h149l4 4v5q0 3 4 3h108v-9h14v-21l4-4h42l4 4v16h16l4 4v7q0 3 3 3h109l5 5V0"/>
+    <g id="ball"><circle cy="-79" r="9.5"/></g>
+  </defs>
+  <!-- Longitudinal elevation with two bearing seats and the hollow nose. -->
+  <g transform="translate(291 139)">
+    <g stroke-width="1.8">
+      <use href="#profile"/><use href="#profile" transform="scale(1 -1)"/>
+      <path d="M5-46v92M52-68V68M56-72V72M98-72V72M102-68V68M124-61V61M140-61V61M363-57V57M367-53V53M506-45V45M510-41V41M663-33V33M667-29V29M779-30V30M793-51V51M797-55V55M839-55V55M843-51V51M859-35V35M863-31V31M975-21V21" opacity=".72"/>
+    </g>
+    <path d="M-52 0h1087" stroke-dasharray="38 7 4 7" opacity=".65"/>
+    <path d="M980-12H891l-12 12 12 12h89" stroke-dasharray="8 5" opacity=".69"/>
+    <g stroke-width="1" opacity=".75">
+      <path d="M0 56v57m52-31v21m311-35v35m300-55v55m180-29v29m137-76v86"/>
+      <path d="M0 95h52m0 0h311m0 0h300m0 0h180m0 0h137" marker-start="url(#arrow)" marker-mid="url(#arrow)" marker-end="url(#arrow)"/>
+      <path d="M52-82v-36m791 44v-44" />
+      <path d="M52-110h791" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+    </g>
+  </g>
+  <!-- End elevation: races, rolling elements and bore. -->
+  <g transform="translate(113 469)">
+    <g stroke-width="1.8">
+      <circle r="103"/><circle r="98"/><circle r="90"/>
+      <circle r="68"/><circle r="61"/><circle r="45"/><circle r="40"/>
+      <g opacity=".76">
+        <use href="#ball"/><use href="#ball" transform="rotate(30)"/><use href="#ball" transform="rotate(60)"/>
+        <use href="#ball" transform="rotate(90)"/><use href="#ball" transform="rotate(120)"/><use href="#ball" transform="rotate(150)"/>
+        <use href="#ball" transform="rotate(180)"/><use href="#ball" transform="rotate(210)"/><use href="#ball" transform="rotate(240)"/>
+        <use href="#ball" transform="rotate(270)"/><use href="#ball" transform="rotate(300)"/><use href="#ball" transform="rotate(330)"/>
+      </g>
+    </g>
+    <path d="M-142 0h290M0-141v283" stroke-dasharray="29 6 3 6" opacity=".7"/>
+  </g>
+  <!-- A section through the hollow end; hatching follows the cut material. -->
+  <g transform="translate(1760 192)">
+    <path d="M0-106a106 106 0 1 1 0 212 106 106 0 1 1 0-212Zm0 53a53 53 0 1 0 0 106 53 53 0 1 0 0-106Z" fill="url(#section)" fill-rule="evenodd" stroke-width="1.8"/>
+    <path d="M-156 0h315M0-137v283" stroke-dasharray="36 6 4 6" opacity=".6"/>
+    <path d="M-76 76 77-77" marker-start="url(#arrow)" marker-end="url(#arrow)" opacity=".75"/>
+  </g>
+  <!-- Enlarged axial section of the nose, with its keyway and bore shoulder. -->
+  <g transform="translate(758 644)">
+    <g fill="url(#section)" stroke-width="1.7">
+      <path d="m0-55 9-7h163v-13h31v-29l7-7h61l7 7v40h39l5 5v14q0 5 5 5h329l6 6v8H339l-16-10H0Z"/>
+      <path d="m0 55 9 7h163v13h31v29l7 7h61l7-7V64h39l5-5V45q0-5 5-5h329l6-6v-8H339l-16 10H0Z"/>
+    </g>
+    <path d="M-44 0h754" stroke-dasharray="38 7 4 7" opacity=".65"/>
+    <path d="M662-40h66m-66 80h66m-12-80v80" opacity=".75"/>
+    <path d="M716-40v80" marker-start="url(#arrow)" marker-end="url(#arrow)" opacity=".75"/>
+    <path d="M393-40v-33l30-30h88" opacity=".66"/>
+  </g>
+</svg>
