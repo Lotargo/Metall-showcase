@@ -75,6 +75,7 @@ section[id] { scroll-margin-top: 86px; }
 .hero-copy {
   container-type: inline-size; display: grid; align-items: center;
   min-height: clamp(182px, 16vw, 308px);
+  translate: 0 clamp(-64px, -3.2vw, -24px);
 }
 h1 {
   font-family: var(--font-display);
@@ -228,7 +229,7 @@ h2 { font-size: clamp(41px, 5.75vw, 88px); line-height: 1.035; font-weight: 525;
     grid-template-columns: 1fr; min-height: 0; row-gap: clamp(28px, 5vw, 44px);
     padding: 50px var(--pad) 42px;
   }
-  .hero-copy { min-height: 0; }
+  .hero-copy { min-height: 0; translate: none; }
   h1 { font-size: clamp(28px, 13.2cqi, 77px); }
   .hero-figure { width: min(100%, 650px); justify-self: center; }
   .hero-metal { width: 106%; }
