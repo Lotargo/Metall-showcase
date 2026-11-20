@@ -5,7 +5,6 @@ const TURN = Math.PI * 2
 export function mountMachiningField(canvas) {
   const ctx = canvas.getContext('2d')
   if (!ctx) return () => {}
-  const footer = canvas.dataset.variant === 'footer'
   const motion = matchMedia('(prefers-reduced-motion: reduce)')
   const isFrameDue = createFrameClock()
   let width = 0, height = 0, frame = 0, previous = 0, elapsed = 0
@@ -14,13 +13,13 @@ export function mountMachiningField(canvas) {
   canvas.setAttribute('aria-hidden', 'true')
 
   // Give each grain permanent coordinates so even the still frame is reproducible.
-  let seed = footer ? 49157 : 72019
+  let seed = 72019
   function random() {
     seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0
     return seed / 4294967296
   }
   const grains = []
-  const rows = footer ? 32 : 28
+  const rows = 28
   for (let row = 0; row < rows; row++) {
     const count = 12 + row * 5
     for (let i = 0; i < count; i++) {
@@ -58,7 +57,7 @@ export function mountMachiningField(canvas) {
   function paint() {
     ctx.clearRect(0, 0, width, height)
     if (!width || !height) return
-    const spanX = width * (footer ? 0.64 : 0.61)
+    const spanX = width * 0.61
     const spanY = height * 0.58
     const pixelScale = Math.max(0.77, Math.min(1.19, Math.sqrt(width * height / 300000)))
     for (const grain of grains) {
@@ -76,7 +75,7 @@ export function mountMachiningField(canvas) {
       const envelope = Math.max(0, Math.sin(Math.PI * r)) ** 0.42
       const light = 0.70 + 0.18 * Math.cos(ripple) + 0.16 * depth
       const size = (1.65 + grain.size * 1.75) * perspective ** 2 * pixelScale
-      ctx.globalAlpha = Math.min(0.78, envelope * light * grain.light * (footer ? 0.95 : 0.80))
+      ctx.globalAlpha = Math.min(0.78, envelope * light * grain.light * 0.80)
       const sprite = sprites[Math.floor(grain.shape * 8 / Math.PI)]
       ctx.drawImage(sprite, x - size / 2, y - size / 2, size, size)
     }

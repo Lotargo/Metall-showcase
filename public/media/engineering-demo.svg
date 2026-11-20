@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 450" fill="none" stroke="#636358" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">
+  <defs>
+    <pattern id="section-hatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(39)">
+      <path d="M0 0v5" stroke-width=".8" opacity=".8"/>
+    </pattern>
+    <marker id="arrow-tip" viewBox="0 0 8 4" refX="7.8" refY="2" markerWidth="7" markerHeight="3.5" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
+      <path d="m0 0 8 2-8 2Z" fill="#636358" stroke="none"/>
+    </marker>
+  </defs>
+
+  <!-- A ruled process sheet and a second drawing form the exposed edges. -->
+  <g transform="translate(124 48) rotate(8)">
+    <path d="M0 0h458v299H0Z" fill="#dfddd3" stroke-width="1.1"/>
+    <path d="M10 9h438v280H10Z" stroke-width=".8" opacity=".7"/>
+    <g stroke-width=".85" opacity=".66">
+      <path d="M10 38h438M10 55h438M10 80h438M10 105h438M10 130h438M10 155h438M10 180h438M10 205h438M10 230h438M10 255h438M53 38v251m186-251v251m82-251v251m64-251v251"/>
+    </g>
+  </g>
+  <g transform="translate(86 82) rotate(2.8)">
+    <path d="M0 0h467v310H0Z" fill="#eae8de" stroke-width="1.15"/>
+    <path d="M12 10h444v289H12Z" stroke-width=".8" opacity=".72"/>
+    <g stroke-width="1.05" opacity=".7">
+      <circle cx="372" cy="200" r="53"/><circle cx="372" cy="200" r="38"/>
+      <circle cx="372" cy="200" r="17"/>
+      <path d="M304 200h137m-69-68v136" stroke-dasharray="14 4 2 4"/>
+      <path d="M12 260h213v39M12 272h213m-213 13h213m-146-25v39m70-39v39"/>
+    </g>
+  </g>
+
+  <!-- The top drawing pairs a turned arbor with its side elevation and section. -->
+  <g transform="matrix(1.055 -.185 .153 .875 35 144)">
+    <path d="M0 0h473v302H0Z" fill="#f7f5ee" stroke-width="1.4"/>
+    <path d="M12 10h450v281H12Z" stroke-width=".8" opacity=".78"/>
+
+    <g transform="translate(67 137) rotate(-9)">
+      <g stroke-width="1.6">
+        <path d="M0-16h45a6 16 0 0 1 0 32H0a6 16 0 0 1 0-32Z" fill="#efeee6"/>
+        <path d="M42-24h46a9 24 0 0 1 0 48H42a9 24 0 0 1 0-48Z" fill="#efeee6"/>
+        <path d="M86-33h25a12 33 0 0 1 0 66H86a12 33 0 0 1 0-66Z" fill="#eeede4"/>
+        <ellipse cx="111" rx="12" ry="33" fill="#e2e0d5"/>
+        <path d="M111-22h88a8 22 0 0 1 0 44h-88a8 22 0 0 1 0-44Z" fill="#f2f0e8"/>
+        <path d="M198-41h21a15 41 0 0 1 0 82h-21a15 41 0 0 1 0-82Z" fill="#efede5"/>
+        <ellipse cx="219" rx="15" ry="41" fill="#dfded3"/>
+        <path d="M219-26h35a10 26 0 0 1 0 52h-35a10 26 0 0 1 0-52Z" fill="#efeee5"/>
+        <ellipse cx="254" rx="10" ry="26" fill="#e6e4da"/>
+        <path d="M254-17h40a6.5 17 0 0 1 0 34h-40a6.5 17 0 0 1 0-34Z" fill="#f1efe7"/>
+        <ellipse cx="294" rx="6.5" ry="17" fill="#e1dfd4"/>
+        <ellipse cx="294" rx="3" ry="8" fill="#c4c3b6" stroke-width="1"/>
+      </g>
+      <g stroke-width="1.05">
+        <path d="M126-10q-4 0-5 3t4 4h47q5 0 6-3t-4-4Z" fill="#d7d6ca"/>
+        <path d="M124-5h48q3 0 4-3" opacity=".85"/>
+        <path d="M88-32a12 32 0 0 0 0 64m112-72a15 40 0 0 0 0 80M252-25a9 25 0 0 1 0 50" opacity=".58"/>
+      </g>
+      <g stroke-width=".85" opacity=".76">
+        <path d="M-22 0H-3m307 0h24" stroke-dasharray="13 3 2 3"/>
+        <path d="m147-10 18-42h33m35 21 19-24h37"/>
+        <path d="M0 22v36m294-36v36"/>
+        <path d="M0 53h294" marker-start="url(#arrow-tip)" marker-end="url(#arrow-tip)"/>
+      </g>
+    </g>
+
+    <g transform="translate(57 232)">
+      <g stroke-width="1.05">
+        <path d="M0-5h18v-3h19v-4h11v4h43v-9h10v6h16v5h19V6h-19v5h-16v6H91V8H48v4H37V8H18V5H0Z"/>
+        <path d="M18-8V8m19-20v24m11-24v24m43-29v34m10-34v34m16-28v22"/>
+      </g>
+      <g stroke-width=".7" opacity=".78">
+        <path d="M-10 0h158" stroke-dasharray="12 3 2 3"/>
+        <path d="M0 10v22m136-22v22m-136-5h136" />
+        <path d="m-2 30 4-6m132 6 4-6"/>
+      </g>
+    </g>
+    <g transform="translate(242 232)">
+      <path d="M0-20a20 20 0 1 1 0 40 20 20 0 1 1 0-40Zm-2.8 12v-2.7h5.6V-8a8.5 8.5 0 1 1-5.6 0Z" fill="url(#section-hatch)" fill-rule="evenodd" stroke-width="1.05"/>
+      <path d="M-31 0h62M0-31v62" stroke-width=".7" stroke-dasharray="12 3 2 3"/>
+    </g>
+    <g stroke-width=".85" opacity=".8">
+      <path d="M309 249h153m-153 0v42m0-28h153m-153 14h153m-116-28v42m68-28v28m30-42v42"/>
+    </g>
+  </g>
+</svg>

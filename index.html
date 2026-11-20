@@ -14,11 +14,11 @@
       <div class="nav-shell">
         <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"></span>Metall</a>
         <nav aria-label="Разделы страницы">
-          <a href="#model">3D-модель</a>
+          <a href="#model">Вал в разборе</a>
           <a href="#capabilities">Возможности</a>
           <a href="#workflow">Схема</a>
         </nav>
-        <a class="nav-demo" href="https://lotargo.github.io/Metall-DEMO/">Открыть демо <span aria-hidden="true">↗</span></a>
+        <a class="nav-demo" href="https://lotargo.github.io/Metall-DEMO/">Открыть демо</a>
       </div>
     </header>
 
@@ -46,10 +46,12 @@
           <div class="model-inner wrap">
             <div class="model-copy" data-reveal>
               <h2 id="model-title">Вал в разборе</h2>
+              <p>Интерактивная иллюстрация сборки. Передвиньте ползунок, чтобы рассмотреть вал, подшипники и крепёж по отдельности.</p>
               <div class="model-control">
-                <label class="visually-hidden" for="explode">Степень разбора модели</label>
+                <label class="visually-hidden" for="explode">Степень разбора вала</label>
                 <input id="explode" type="range" min="0" max="100" value="0" step="1" aria-valuetext="В сборе">
               </div>
+              <div class="model-scale" aria-hidden="true"><span>В сборе</span><span>В разборе</span></div>
             </div>
 
             <div class="model-figure" data-reveal>
@@ -123,47 +125,74 @@
         </div>
       </section>
 
-      <section class="workflow-section wrap" id="workflow" aria-labelledby="workflow-title">
-        <div class="section-heading" data-reveal>
-          <h2 id="workflow-title">Как устроен Metall</h2>
+      <section class="workflow-section" id="workflow" aria-labelledby="workflow-title">
+        <div class="workflow-content wrap">
+          <div class="section-heading" data-reveal>
+            <h2 id="workflow-title">Как устроен Metall</h2>
+          </div>
+          <picture class="workflow-diagram" data-reveal>
+            <source media="(max-width: 1023px)" srcset="./media/metall-workflow-dark-mobile.svg" width="320" height="858">
+            <img src="./media/metall-workflow-dark.svg" width="1200" height="512" alt="Схема работы Metall" aria-describedby="workflow-description" loading="lazy" decoding="async">
+          </picture>
+          <p class="visually-hidden" id="workflow-description">Metall строит 3D-модель по чертежу или импортирует приложенный STEP. САПР измеряет модель, а Metall сверяет её с требованиями чертежа и формирует паспорт и замечания. После принятия модели Metall определяет заготовку, маршрут и объём съёма, рассчитывает машинное время и готовит предварительную смету работ.</p>
+          <dl class="workflow-details" data-reveal>
+            <div>
+              <dt>Откуда берутся требования</dt>
+              <dd>STEP даёт готовую геометрию. Из чертежа Metall берёт размеры для сверки, допуски и шероховатость. Паспорт связывает требования с измерениями модели.</dd>
+            </div>
+            <div>
+              <dt>Что происходит перед расчётом</dt>
+              <dd>При ручной проверке технолог подтверждает модель. Если построена черновая геометрия, измерения САПР позволяют разделить съём на черновой и чистовой.</dd>
+            </div>
+            <div>
+              <dt>На чём основана смета</dt>
+              <dd>Математическое ядро считает машинное время по формулам. В основаниях расчёта видны исходные величины, допущения и причины диапазона оценки.</dd>
+            </div>
+          </dl>
         </div>
-        <picture class="workflow-diagram" data-reveal>
-          <source media="(max-width: 1023px)" srcset="./media/metall-workflow-mobile.svg" width="320" height="858">
-          <img src="./media/metall-workflow.svg" width="1200" height="512" alt="Схема работы Metall" aria-describedby="workflow-description" loading="lazy" decoding="async">
-        </picture>
-        <p class="visually-hidden" id="workflow-description">Metall строит 3D-модель по чертежу или импортирует приложенный STEP. САПР измеряет модель, а Metall сверяет её с требованиями чертежа и формирует паспорт и замечания. После принятия модели Metall определяет заготовку, маршрут и объём съёма, рассчитывает машинное время и готовит предварительную смету работ.</p>
       </section>
 
-      <section class="benefits-section wrap" aria-labelledby="benefits-title">
+      <section class="benefits-section wrap" id="benefits" aria-labelledby="benefits-title">
         <div class="section-heading" data-reveal>
           <h2 id="benefits-title">Что получает предприятие</h2>
         </div>
         <dl class="benefit-list" data-reveal>
           <div>
             <dt>Конструктору</dt>
-            <dd>Сверить спорный участок по 3D-модели и фрагменту чертежа и согласовать уточнение с технологом до начала изготовления.</dd>
+            <dd>Сопоставить, например, диаметр ступени на чертеже с измерением модели. По фрагменту чертежа и замечанию Metall проще согласовать уточнение до передачи в цех.</dd>
           </div>
           <div>
             <dt>Технологу</dt>
-            <dd>Получить паспорт детали и предварительный маршрут с операциями, чтобы сократить время на перенос размеров и подготовку первого расчёта.</dd>
+            <dd>Открыть паспорт и предварительный маршрут, чтобы проверить, какая заготовка принята, какие операции предусмотрены и какое время оценено на деталь.</dd>
           </div>
           <div>
             <dt>Руководителю производства</dt>
-            <dd>Оценить время на партию и заранее спланировать загрузку оборудования.</dd>
+            <dd>Оценить, займёт ли партия свободное время станков. В расчёте отдельно видны наладка и время обработки, которое зависит от количества деталей.</dd>
           </div>
         </dl>
-        <p class="tender-note" data-reveal><strong>Участие в тендерах.</strong> Предварительный расчёт помогает быстрее подготовить заявку, обосновать срок изготовления и предложить конкурентную цену с учётом стоимости работ.</p>
+        <div class="tender-panel" data-reveal>
+          <div>
+            <h3>Предложение на тендер</h3>
+            <p>Предварительный расчёт помогает быстрее подать заявку, обосновать срок изготовления и предложить конкурентную цену. Видно, какие работы учтены и от каких допущений зависит итог.</p>
+          </div>
+          <dl class="tender-basis">
+            <div><dt>Время партии</dt><dd>Наладка + количество × время на деталь</dd></div>
+            <div><dt>Стоимость работ</dt><dd>Сумма по группам с учётом заданных ставок</dd></div>
+          </dl>
+        </div>
+        <div class="benefits-drawing" aria-hidden="true"></div>
       </section>
 
-      <section class="demo-section wrap" aria-labelledby="demo-title">
+      <section class="demo-section wrap" id="demo" aria-labelledby="demo-title">
         <div class="demo-panel" data-reveal>
           <div class="demo-copy">
             <h2 id="demo-title">Metall в работе</h2>
-            <a class="button button-dark" href="https://lotargo.github.io/Metall-DEMO/">Открыть демо <span aria-hidden="true">↗</span></a>
+            <p>В демо можно открыть сохранённый расчёт вала. Поверните 3D-модель, изучите паспорт, маршрут и основания сметы или скачайте STEP и печатные формы.</p>
+            <a class="button button-dark" href="https://lotargo.github.io/Metall-DEMO/">Открыть демо</a>
           </div>
-          <div class="demo-graphic">
-            <canvas class="machining-field" data-machining-field data-variant="footer" aria-hidden="true"></canvas>
-          </div>
+          <figure class="demo-graphic">
+            <img src="./media/demo-drive-shaft.webp" width="1440" height="900" alt="Рендер ступенчатого приводного вала в синеграфитовом тоне" loading="lazy" decoding="async">
+          </figure>
         </div>
       </section>
     </main>
@@ -176,7 +205,7 @@
             <div class="footer-group">
               <p id="footer-product">Продукт</p>
               <ul aria-labelledby="footer-product">
-                <li><a href="#model">3D-модель</a></li>
+                <li><a href="#model">Вал в разборе</a></li>
                 <li><a href="#capabilities">Возможности</a></li>
                 <li><a href="#workflow">Схема работы</a></li>
               </ul>
@@ -184,13 +213,13 @@
             <div class="footer-group">
               <p id="footer-demo">Демонстрация</p>
               <ul aria-labelledby="footer-demo">
-                <li><a href="https://lotargo.github.io/Metall-DEMO/">Открыть демо <span aria-hidden="true">↗</span></a></li>
+                <li><a href="https://lotargo.github.io/Metall-DEMO/">Открыть демо</a></li>
               </ul>
             </div>
             <div class="footer-group">
               <p id="footer-resources">Материалы</p>
               <ul aria-labelledby="footer-resources">
-                <li><a href="https://github.com/Lotargo/Metall-DEMO">Репозиторий демо <span aria-hidden="true">↗</span></a></li>
+                <li><a href="https://github.com/Lotargo/Metall-DEMO">Репозиторий демо</a></li>
               </ul>
             </div>
           </nav>
