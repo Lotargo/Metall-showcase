@@ -121,3 +121,32 @@ const loader = new IntersectionObserver(([entry]) => {
     })
 }, { rootMargin: '170px' })
 loader.observe(stage)
+
+const machiningStage = document.querySelector('.machining-stage')
+const machiningPoster = machiningStage.querySelector('.machining-poster')
+const machiningCanvas = machiningStage.querySelector('.machining-canvas')
+const stageControls = document.querySelector('.stage-controls')
+const selectedStage = () => stageControls.querySelector('input:checked')
+let drawMachiningStage
+
+function syncMachiningStage() {
+  const option = selectedStage()
+  machiningStage.setAttribute('aria-label', option.dataset.summary)
+  machiningPoster.src = import.meta.env.BASE_URL + 'media/machining-' + option.value + '.webp'
+  drawMachiningStage?.(option.value)
+}
+
+stageControls.addEventListener('change', syncMachiningStage)
+syncMachiningStage()
+
+const machiningLoader = new IntersectionObserver(([entry]) => {
+  if (!entry.isIntersecting) return
+  machiningLoader.disconnect()
+  import('./model.js')
+    .then(({ mountMachiningStages }) => mountMachiningStages(machiningCanvas, machiningStage, () => selectedStage().value))
+    .then(render => { drawMachiningStage = render })
+    .catch(() => {
+      // Keep the selected Blender render if the live model cannot load.
+    })
+}, { rootMargin: '170px' })
+machiningLoader.observe(machiningStage)

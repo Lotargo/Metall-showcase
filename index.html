@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Metall — подготовка производства по чертежу. Геометрия детали, заготовка и предварительный маршрут обработки.">
+    <meta name="description" content="Metall сверяет чертёж с 3D-моделью, подбирает заготовку, готовит маршрут обработки и предварительную смету работ.">
     <meta name="theme-color" content="#f2f0eb">
     <link rel="icon" type="image/png" href="./favicon.png">
-    <title>Metall — от чертежа к производству</title>
+    <title>Metall. От чертежа до 3D-модели и сметы</title>
   </head>
   <body id="top">
     <a class="skip-link" href="#main">К содержанию</a>
@@ -16,6 +16,7 @@
         <nav aria-label="Разделы страницы">
           <a href="#model">3D-модель</a>
           <a href="#capabilities">Возможности</a>
+          <a href="#workflow">Схема</a>
         </nav>
         <a class="nav-demo" href="https://lotargo.github.io/Metall-DEMO/">Открыть демо <span aria-hidden="true">↗</span></a>
       </div>
@@ -26,7 +27,9 @@
         <img class="hero-drawing" src="./media/shaft-drawing.svg" alt="">
         <div class="hero-inner wrap">
           <div class="hero-copy">
-            <h1 id="hero-title">От чертежа<br>к&nbsp;производству</h1>
+            <h1 id="hero-title">От чертежа до <span>3D-модели</span> и сметы</h1>
+            <p class="hero-lead">Metall помогает проверить чертёж до передачи в цех, предлагает маршрут обработки и готовит предварительную смету.</p>
+            <p class="hero-inputs">Metall строит 3D-модель по чертежу в PDF, PNG, JPEG или WebP. Готовую модель можно приложить в&nbsp;STEP.</p>
           </div>
           <figure class="hero-figure">
             <div class="hero-graphic">
@@ -69,21 +72,87 @@
             <img src="./media/sketch-drawing.webp" width="1260" height="780" alt="" loading="lazy">
             <div class="feature-copy">
               <h3>Разбор чертежа</h3>
+              <p>ИИ читает размеры и требования. Metall сверяет их с измерениями 3D-модели, помогает заметить противоречия и недостающие размеры. К замечаниям привязаны фрагменты чертежа, которые нужно уточнить.</p>
             </div>
           </article>
           <article class="feature" data-reveal>
             <img src="./media/sketch-geometry.webp" width="1260" height="780" alt="" loading="lazy">
             <div class="feature-copy">
               <h3>Модель и заготовка</h3>
+              <p>Metall учитывает заготовку, указанную на чертеже, или подбирает подходящую. Модели строятся и измеряются специализированными средствами САПР.</p>
             </div>
           </article>
           <article class="feature" data-reveal>
             <img src="./media/sketch-route.webp" width="1260" height="780" alt="" loading="lazy">
             <div class="feature-copy">
               <h3>Маршрут обработки</h3>
+              <p>Собственное математическое ядро рассчитывает машинное время по формулам. Смета учитывает обработку, наладку партии, количество деталей и ставки. Исходные данные и допущения доступны для проверки.</p>
             </div>
           </article>
         </div>
+      </section>
+
+      <section class="machining-section wrap" id="machining" aria-labelledby="machining-title">
+        <div class="machining-layout" data-reveal>
+          <div class="machining-copy">
+            <h2 id="machining-title">От заготовки до готовой детали</h2>
+            <p>При достаточных данных Metall строит отдельную 3D-модель детали после черновой обработки. По объёмам заготовки, черновой и чистовой моделей система определяет, сколько металла предстоит снять на каждом этапе.</p>
+          </div>
+          <div class="machining-comparison">
+            <fieldset class="stage-controls">
+              <legend class="visually-hidden">Состояние детали</legend>
+              <label>
+                <input class="visually-hidden" type="radio" name="machining-stage" value="blank" data-summary="Сплошная цилиндрическая заготовка" checked>
+                <span>Заготовка</span>
+              </label>
+              <label>
+                <input class="visually-hidden" type="radio" name="machining-stage" value="rough" data-summary="Ступенчатая деталь с припуском после черновой обработки">
+                <span>Черновая модель</span>
+              </label>
+              <label>
+                <input class="visually-hidden" type="radio" name="machining-stage" value="finished" data-summary="Готовая деталь со ступенями, пазом и отверстием">
+                <span>Готовая деталь</span>
+              </label>
+            </fieldset>
+            <figure class="machining-stage" role="img" aria-label="Сплошная цилиндрическая заготовка">
+              <img class="machining-poster" src="./media/machining-blank.webp" width="1400" height="790" alt="" loading="lazy" decoding="async">
+              <div class="machining-canvas" aria-hidden="true"></div>
+            </figure>
+            <p class="machining-caption">Демонстрационная модель</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="workflow-section wrap" id="workflow" aria-labelledby="workflow-title">
+        <div class="section-heading" data-reveal>
+          <h2 id="workflow-title">Как устроен Metall</h2>
+        </div>
+        <picture class="workflow-diagram" data-reveal>
+          <source media="(max-width: 1023px)" srcset="./media/metall-workflow-mobile.svg" width="320" height="858">
+          <img src="./media/metall-workflow.svg" width="1200" height="512" alt="Схема работы Metall" aria-describedby="workflow-description" loading="lazy" decoding="async">
+        </picture>
+        <p class="visually-hidden" id="workflow-description">Metall строит 3D-модель по чертежу или импортирует приложенный STEP. САПР измеряет модель, а Metall сверяет её с требованиями чертежа и формирует паспорт и замечания. После принятия модели Metall определяет заготовку, маршрут и объём съёма, рассчитывает машинное время и готовит предварительную смету работ.</p>
+      </section>
+
+      <section class="benefits-section wrap" aria-labelledby="benefits-title">
+        <div class="section-heading" data-reveal>
+          <h2 id="benefits-title">Что получает предприятие</h2>
+        </div>
+        <dl class="benefit-list" data-reveal>
+          <div>
+            <dt>Конструктору</dt>
+            <dd>Сверить спорный участок по 3D-модели и фрагменту чертежа и согласовать уточнение с технологом до начала изготовления.</dd>
+          </div>
+          <div>
+            <dt>Технологу</dt>
+            <dd>Получить паспорт детали и предварительный маршрут с операциями, чтобы сократить время на перенос размеров и подготовку первого расчёта.</dd>
+          </div>
+          <div>
+            <dt>Руководителю производства</dt>
+            <dd>Оценить время на партию и заранее спланировать загрузку оборудования.</dd>
+          </div>
+        </dl>
+        <p class="tender-note" data-reveal><strong>Участие в тендерах.</strong> Предварительный расчёт помогает быстрее подготовить заявку, обосновать срок изготовления и предложить конкурентную цену с учётом стоимости работ.</p>
       </section>
 
       <section class="demo-section wrap" aria-labelledby="demo-title">
@@ -109,6 +178,7 @@
               <ul aria-labelledby="footer-product">
                 <li><a href="#model">3D-модель</a></li>
                 <li><a href="#capabilities">Возможности</a></li>
+                <li><a href="#workflow">Схема работы</a></li>
               </ul>
             </div>
             <div class="footer-group">
