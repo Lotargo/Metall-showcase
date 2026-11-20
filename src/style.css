@@ -115,8 +115,6 @@ h1 {
 #model { scroll-margin-top: var(--model-top); }
 .model-story {
   --model-top: 88px;
-  width: min(1392px, calc(100% - 2 * var(--pad)));
-  margin-inline: auto;
   color: var(--paper);
 }
 .model-story::after {
@@ -127,9 +125,10 @@ h1 {
   background: radial-gradient(ellipse at 72% 53%, #3b3c37, #242522 42%, var(--night) 76%);
 }
 .model-inner {
+  width: min(1392px, calc(100% - 2 * var(--pad)));
   display: grid; grid-template-columns: minmax(0, .64fr) minmax(0, 1fr); align-items: center;
   gap: clamp(20px, 3.8vw, 58px);
-  padding: clamp(24px, 3.2vw, 48px) clamp(24px, 4.1vw, 65px);
+  padding: clamp(38px, 4.9vw, 74px) clamp(24px, 4.1vw, 65px);
 }
 .model-copy {
   position: relative; z-index: 1; container-type: inline-size; min-width: 0;
@@ -230,7 +229,7 @@ h2 { font-size: clamp(41px, 5.75vw, 88px); line-height: 1.035; font-weight: 525;
   h1 { font-size: clamp(28px, 13.2cqi, 77px); }
   .hero-figure { width: min(100%, 650px); justify-self: center; }
   .hero-metal { width: 106%; }
-  .model-inner { grid-template-columns: 1fr; gap: 14px; padding-block: 32px 24px; }
+  .model-inner { grid-template-columns: 1fr; gap: 14px; padding-block: 44px 36px; }
   .model-copy h2 { font-size: min(15.4cqi, 62px); }
   .model-stage { height: clamp(196px, 46vw, 370px); }
   .demo-copy h2 { font-size: clamp(37px, 6vw, 61px); }
@@ -246,7 +245,7 @@ h2 { font-size: clamp(41px, 5.75vw, 88px); line-height: 1.035; font-weight: 525;
   section[id] { scroll-margin-top: 100px; }
   .model-story { --model-top: 110px; }
   .model-story::after { height: clamp(148px, 19vh, 180px); }
-  .model-inner { padding: 24px 18px 18px; }
+  .model-inner { padding: 34px 18px 28px; }
   .model-copy h2 { font-size: min(15.4cqi, 50px); }
   .feature-grid { grid-template-columns: 1fr; gap: 26px; }
   .feature-copy { padding-block: 15px 17px; }
