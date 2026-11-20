@@ -82,7 +82,7 @@ function syncScroll() {
   manualAt = null
   const travel = story.offsetHeight - sticky.offsetHeight
   if (travel <= 0) return
-  const elapsed = -story.getBoundingClientRect().top
+  const elapsed = sticky.getBoundingClientRect().top - story.getBoundingClientRect().top
   target = Math.min(1, Math.max(0, elapsed / travel))
   if (target !== position && !driftFrame) {
     lastFrame = performance.now()
@@ -95,9 +95,6 @@ function requestSync() {
 }
 
 slider.addEventListener('input', () => setManual(Number(slider.value)))
-document.querySelectorAll('[data-position]').forEach(button => {
-  button.addEventListener('click', () => setManual(Number(button.dataset.position)))
-})
 window.addEventListener('scroll', requestSync, { passive: true })
 window.addEventListener('resize', requestSync)
 scrollMotion.addEventListener('change', requestSync)
